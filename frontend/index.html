@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Expense Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header class="main-header">
+            <h1>💰 Expense Tracker</h1>
+            <p>Master your money, one entry at a time.</p>
+        </header>
+
+        <section class="stats-grid">
+            <div class="stat-card total">
+                <h3>Total Spent</h3>
+                <p id="totalExpenses">$0.00</p>
+            </div>
+            <div class="stat-card count">
+                <h3>Entries</h3>
+                <p id="expenseCount">0</p>
+            </div>
+            <div class="stat-card average">
+                <h3>Daily Average</h3>
+                <p id="avgExpense">$0.00</p>
+            </div>
+        </section>
+
+        <div class="dashboard-content">
+            <aside class="form-sidebar">
+                <div class="card">
+                    <h2>Add New Expense</h2>
+                    <form id="expenseForm">
+                        <div class="input-group">
+                            <label for="description">What did you buy?</label>
+                            <input type="text" id="description" placeholder="e.g. Grocery, Netflix..." required>
+                        </div>
+                        
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label for="amount">Amount ($)</label>
+                                <input type="number" id="amount" step="0.01" placeholder="0.00" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="category">Category</label>
+                                <select id="category" required>
+                                    <option value="Food">🍔 Food</option>
+                                    <option value="Transport">🚗 Transport</option>
+                                    <option value="Entertainment">🎬 Entertainment</option>
+                                    <option value="Shopping">🛍️ Shopping</option>
+                                    <option value="Other">📌 Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" required>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Save Expense</button>
+                    </form>
+                </div>
+            </aside>
+
+            <main class="main-view">
+                <div class="card chart-card">
+                    <h2>Spending Trend</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="expenseChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card table-card">
+                    <h2>Transaction History</h2>
+                    <div class="table-container">
+                        <table id="expensesTable">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Category</th>
+                                    <th>Description</th>
+                                    <th>Amount</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="expensesBody">
+                                </tbody>
+                        </table>
+                        <div id="noExpenses" class="empty-state">
+                            <p>No expenses recorded yet. Start by adding one!</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
